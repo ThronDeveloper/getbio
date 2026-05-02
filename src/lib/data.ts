@@ -63,22 +63,25 @@ const defaultData: ProfileData = {
     gitRepos: [],
 };
 
-import { supabase } from "./supabase";
+import { getSupabase, supabaseUrl } from "./supabase";
 
 export async function getProfileData(): Promise<ProfileData> {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL === "YOUR_SUPABASE_URL_HERE") {
+    if (!supabaseUrl || supabaseUrl === "YOUR_SUPABASE_URL_HERE") {
         console.warn("Supabase credentials not configured. Falling back to default data.");
         return defaultData;
     }
 
     try {
-        const { data, error } = await supabase
+        const client = getSupabase();
+        if (!client) return defaultData;
+
+        const { data: result, error } = await client
             .from('profiles')
             .select('data')
             .eq('id', 'admin')
             .maybeSingle();
             
-        if (error || !data) {
+        if (error || !result) {
             if (error) {
                 console.error("Supabase fetch error:", error.code, error.message, error.hint || "");
             } else {
@@ -87,7 +90,7 @@ export async function getProfileData(): Promise<ProfileData> {
             return defaultData;
         }
         
-        const profile = data.data as ProfileData;
+        const profile = (result as { data: ProfileData }).data;
         // Ensure new fields exist
         if (!Array.isArray(profile.socials)) {
             profile.socials = defaultData.socials;
@@ -103,13 +106,16 @@ export async function getProfileData(): Promise<ProfileData> {
 }
 
 export async function saveProfileData(data: ProfileData) {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL === "YOUR_SUPABASE_URL_HERE") {
+    if (!supabaseUrl || supabaseUrl === "YOUR_SUPABASE_URL_HERE") {
         console.warn("Supabase credentials not configured. Cannot save data.");
         return;
     }
 
     try {
-        const { error } = await supabase
+        const client = getSupabase();
+        if (!client) return;
+
+        const { error } = await (client as any)
             .from('profiles')
             .upsert({ id: 'admin', data });
             
