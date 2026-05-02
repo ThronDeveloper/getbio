@@ -94,6 +94,13 @@ export async function getProfileData(): Promise<ProfileData> {
         // Ensure new fields exist
         if (!Array.isArray(profile.socials)) {
             profile.socials = defaultData.socials;
+        } else {
+            const existingPlatforms = new Set(profile.socials.map(s => s.platform));
+            for (const p of SOCIAL_PLATFORMS) {
+                if (!existingPlatforms.has(p.id)) {
+                    profile.socials.push({ platform: p.id, username: "", isActive: false });
+                }
+            }
         }
         if (!Array.isArray(profile.gitRepos)) {
             profile.gitRepos = [];
