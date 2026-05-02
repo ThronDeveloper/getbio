@@ -1,6 +1,7 @@
 "use client";
 
-import { FiMousePointer, FiTrash2, FiEdit2, FiExternalLink } from "react-icons/fi";
+import { FiMousePointer } from "react-icons/fi";
+import { ExternalLink, Edit2, Trash2 } from "lucide-react";
 import type { LinkItem } from "@/lib/data";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

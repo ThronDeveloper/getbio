@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { getProfileData, type ProfileData, type GitRepo } from "@/lib/data";
 import { motion } from "framer-motion";
 
@@ -49,7 +50,7 @@ export default function GitPage() {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 15 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } }
     };
 
     const RepoCard = ({ repo }: { repo: GitRepo }) => (
@@ -157,7 +158,7 @@ export default function GitPage() {
                         </svg>
                     </div>
                     <h1 style={{ color: "#ffffff", fontSize: "1.75rem", fontWeight: 700, letterSpacing: "-0.03em", margin: "0 0 0.5rem" }}>
-                        {data.name}'s Repositories
+                        {data.name}&apos;s Repositories
                     </h1>
                     <p style={{ color: "#a1a1aa", fontSize: "1rem", margin: 0 }}>
                         Open source projects and contributions
@@ -200,7 +201,7 @@ export default function GitPage() {
 
                 {/* Back Link */}
                 <motion.div variants={itemVariants} style={{ marginTop: "4rem", textAlign: "center" }}>
-                    <a href="/" style={{ color: "#a1a1aa", textDecoration: "none", fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: "8px", transition: "color 0.2s" }}
+                    <Link href="/" style={{ color: "#a1a1aa", textDecoration: "none", fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: "8px", transition: "color 0.2s" }}
                        onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
                        onMouseLeave={(e) => (e.currentTarget.style.color = "#a1a1aa")}
                     >
@@ -209,7 +210,7 @@ export default function GitPage() {
                             <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
                         Back to Profile
-                    </a>
+                    </Link>
                 </motion.div>
 
                 {/* Footer */}

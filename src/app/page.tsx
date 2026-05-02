@@ -122,7 +122,7 @@ export default function ProfilePage() {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 15 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } }
     };
 
     return (
@@ -268,10 +268,10 @@ export default function ProfilePage() {
                 {/* Social icons */}
                 <motion.div className="profile-socials" variants={itemVariants} style={{ display: "flex", justifyContent: "center", gap: "1.75rem", flexWrap: "wrap", marginTop: "3rem" }}>
                     {data.socials.filter(s => s.isActive && s.username).map((social) => {
-                        const platform = (window as any).SOCIAL_PLATFORMS?.find((p: any) => p.id === social.platform) || 
-                                       { instagram: "https://instagram.com/", youtube: "https://youtube.com/@", twitter: "https://x.com/", facebook: "https://facebook.com/", tiktok: "https://tiktok.com/@", discord: "https://discord.gg/", github: "https://github.com/", linkedin: "https://linkedin.com/in/", spotify: "https://open.spotify.com/user/", twitch: "https://twitch.tv/", snapchat: "https://snapchat.com/add/", telegram: "https://t.me/" }[social.platform as keyof typeof socials];
+                        const platform = ((window as unknown as Record<string, unknown>).SOCIAL_PLATFORMS as Array<Record<string, unknown>>)?.find((p: Record<string, unknown>) => p.id === social.platform) || 
+                                       { instagram: "https://instagram.com/", youtube: "https://youtube.com/@", twitter: "https://x.com/", facebook: "https://facebook.com/", tiktok: "https://tiktok.com/@", discord: "https://discord.gg/", github: "https://github.com/", linkedin: "https://linkedin.com/in/", spotify: "https://open.spotify.com/user/", twitch: "https://twitch.tv/", snapchat: "https://snapchat.com/add/", telegram: "https://t.me/" }[social.platform as string];
                         
-                        const baseUrl = typeof platform === 'string' ? platform : (platform as any).baseUrl;
+                        const baseUrl = typeof platform === 'string' ? platform : (platform as Record<string, unknown>).baseUrl;
                         const icon = socials.find(s => s.label.toLowerCase().includes(social.platform) || (social.platform === 'twitter' && s.label.includes('X')))?.svg;
                         
                         if (!icon) return null;

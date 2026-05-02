@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getProfileData, saveProfileData, type ProfileData, type GitRepo } from "@/lib/data";
-import { FiPlus, FiMoreVertical, FiGithub, FiStar, FiActivity, FiGlobe } from "react-icons/fi";
+import { FiPlus, FiMoreVertical, FiGithub, FiStar, FiActivity } from "react-icons/fi";
 import { Sidebar } from "@/components/admin/Sidebar";
 import "../admin-styles.css";
 

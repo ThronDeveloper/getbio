@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getProfileData, saveProfileData, type ProfileData, type LinkItem, type SocialLink, SOCIAL_PLATFORMS } from "@/lib/data";
-import { FiPlus, FiMoreVertical, FiHome, FiGlobe, FiUsers, FiCreditCard, FiExternalLink, FiUser, FiInstagram, FiYoutube, FiGithub, FiLinkedin, FiMusic, FiMessageCircle, FiSend, FiTwitch, FiDisc, FiSmile, FiCamera } from "react-icons/fi";
+import { getProfileData, saveProfileData, type ProfileData, type LinkItem, SOCIAL_PLATFORMS } from "@/lib/data";
+import { FiPlus, FiMoreVertical, FiGlobe, FiUser, FiInstagram, FiYoutube, FiGithub, FiLinkedin, FiMusic, FiSend, FiTwitch, FiDisc, FiSmile, FiCamera } from "react-icons/fi";
 import { Sidebar } from "@/components/admin/Sidebar";
 import "../admin-styles.css";
 
-const PLATFORM_ICONS: Record<string, any> = {
+const PLATFORM_ICONS: Record<string, React.ComponentType<{ size: number; color?: string }>> = {
     instagram: FiInstagram,
     youtube: FiYoutube,
     twitter: FiGlobe, // Use Globe for X/Twitter fallback
@@ -29,7 +29,7 @@ export default function AdminPage() {
   const [menuId, setMenuId] = useState<string | null>(null);
   const [newLink, setNewLink] = useState({ label: "", href: "", icon: "🔗" });
   const [editLink, setEditLink] = useState({ label: "", href: "", icon: "🔗" });
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [_selectedIds, setSelectedIds] = useState<string[]>([]);
 
   useEffect(() => {
     getProfileData().then(fresh => setData(fresh));
@@ -261,7 +261,7 @@ export default function AdminPage() {
                 {data.links.map((link) => (
                   <tr 
                     key={link.id} 
-                    className={selectedIds.includes(link.id) ? "selected" : ""}
+                    className={_selectedIds.includes(link.id) ? "selected" : ""}
                     style={{ cursor: "default" }}
                   >
                     <td onClick={() => handleToggleActive(link.id)} style={{ cursor: "pointer" }}>

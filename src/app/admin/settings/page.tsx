@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { Sidebar } from "@/components/admin/Sidebar";
 import { Navbar } from "@/components/admin/Navbar";
 import { getProfileData, saveProfileData, type ProfileData } from "@/lib/data";
-import { FiCamera, FiSave, FiUser, FiFileText, FiCheckCircle } from "react-icons/fi";
+import { FiSave, FiUser, FiCamera, FiCheckCircle, FiFileText } from "react-icons/fi";
+import { User, Camera, BadgeCheck, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,7 +57,7 @@ export default function AdminSettings() {
             <div className="space-y-6">
               <Card className="p-6 bg-zinc-950 border-zinc-900">
                   <h3 className="text-sm font-semibold mb-6 flex items-center gap-2 text-white">
-                      <User size={16} className="text-zinc-500" />
+                      <FiUser size={16} className="text-zinc-500" />
                       Profile Information
                   </h3>
                   
@@ -65,7 +66,7 @@ export default function AdminSettings() {
                           <div className="relative group">
                               <div className="w-20 h-20 rounded-full bg-zinc-900 border-2 border-zinc-800 overflow-hidden flex items-center justify-center">
                                   {data.avatarUrl ? (
-                                      <img src={data.avatarUrl} className="w-full h-full object-cover" />
+                                      <img src={data.avatarUrl} alt="Profile picture" className="w-full h-full object-cover" />
                                   ) : (
                                       <User size={32} className="text-zinc-700" />
                                   )}
