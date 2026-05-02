@@ -259,7 +259,6 @@ export default function ProfilePage() {
                                 letterSpacing: "-0.01em",
                             }}
                         >
-                            <span style={{ fontSize: "1rem" }}>{link.icon}</span>
                             {link.label}
                         </motion.a>
                     ))}
