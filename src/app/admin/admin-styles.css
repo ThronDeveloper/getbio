@@ -1,0 +1,236 @@
+:root {
+    --font-geist: var(--font-geist-sans), ui-sans-serif, system-ui;
+    --fontdeafault-b: rgba(255, 255, 255, 1);
+    --buttondelete: rgba(218, 64, 64, 1);
+    --fontsubtext: rgba(161, 161, 170, 1);
+    --baseprimary-1: rgba(255, 255, 255, 1);
+    --basebrand-secondary: rgba(245, 244, 255, 1);
+    --fontdefault-w: rgba(0, 0, 0, 1);
+    --tabledevider: rgba(39, 39, 42, 1);
+    --buttonsimple: rgba(24, 24, 27, 1);
+    --icondefault-b: rgba(255, 255, 255, 1);
+    --table-2f-2f-2f: rgba(47, 47, 47, 1);
+    
+    /* Font Vars */
+    --base-worspace-name-font-size: 48px;
+    --table-heading-font-size: 12px;
+    --table-user-name-font-size: 14px;
+    --table-field-font-size: 13px;
+}
+
+/* CrazyUI & Geist Integration */
+* {
+    font-family: var(--font-geist);
+}
+
+.general {
+    background-color: #000000;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #000000;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    z-index: 50;
+}
+
+.sidebar-tabs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-tabs.active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.sidebar-tabs:not(.active) {
+    color: #71717a;
+}
+
+.sidebar-tabs:not(.active):hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.main-content {
+    flex: 1;
+    padding: 64px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.settings-title {
+    font-size: var(--base-worspace-name-font-size);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+}
+
+.table-container {
+    background-color: #000000;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    text-align: left;
+    color: #52525b;
+    font-size: var(--table-heading-font-size);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.custom-table td {
+    padding: 20px 24px;
+    color: #ffffff;
+    font-size: var(--table-user-name-font-size);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.custom-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.custom-table tr.selected td {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.add-link-btn {
+    position: fixed;
+    top: 64px;
+    right: 80px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.add-link-btn:hover {
+    transform: translateY(-2px);
+    background-color: #f4f4f5;
+}
+
+.delete-btn {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover:not(:disabled) {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.delete-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Custom Input Styling */
+.custom-input {
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.custom-input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+.action-menu {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 160px;
+    background-color: #000000;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 6px;
+    animation: menu-pop 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes menu-pop {
+    from { opacity: 0; transform: scale(0.95) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.menu-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #a1a1aa;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.menu-item.delete {
+    color: rgba(239, 68, 68, 0.8);
+}
+
+.menu-item.delete:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
