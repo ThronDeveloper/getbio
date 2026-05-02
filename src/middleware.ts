@@ -6,8 +6,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Redirect root domain to bio subdomain
-  if (hostname === "thron.cfg" || hostname === "www.thron.cfg") {
-    return NextResponse.redirect("https://bio.thron.cfg", 301);
+  if (hostname === "thron.cfd" || hostname === "www.thron.cfd") {
+    return NextResponse.redirect("https://bio.thron.cfd", 301);
   }
 
   // Subdomain-based routing
