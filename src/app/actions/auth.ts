@@ -32,3 +32,9 @@ export async function logout() {
   cookieStore.delete("getbio_session");
   redirect("/login");
 }
+
+export async function checkAuth() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("getbio_session");
+  return { success: !!session };
+}

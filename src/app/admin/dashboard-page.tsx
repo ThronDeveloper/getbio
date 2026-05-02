@@ -17,7 +17,11 @@ export default function AdminDashboard() {
   const [newLink, setNewLink] = useState({ label: "", href: "", icon: "🔗" });
 
   useEffect(() => {
-    setData(getProfileData());
+    const fetchData = async () => {
+      const profileData = await getProfileData();
+      setData(profileData);
+    };
+    fetchData();
   }, []);
 
   const handleDelete = (id: string) => {

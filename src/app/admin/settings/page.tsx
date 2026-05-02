@@ -17,7 +17,11 @@ export default function AdminSettings() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setData(getProfileData());
+    const fetchData = async () => {
+      const profileData = await getProfileData();
+      setData(profileData);
+    };
+    fetchData();
   }, []);
 
   const handleSave = () => {
