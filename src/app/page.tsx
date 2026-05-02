@@ -106,6 +106,43 @@ export default function ProfilePage() {
                     <path d="M8.5 17c0 1-1.5 3-2 3-1.5 0-2.833-1.667-3.5-3-.667-1.667-.5-5.833 1.5-11.5C5.957 4.485 7.5 4.16 9 4l1 2.5" />
                 </svg>
             ),
+        },
+        {
+            label: "Spotify",
+            svg: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 15c2.5-1 5.5-1 8 0" />
+                    <path d="M7 12c3-1 7-1 10 0" />
+                    <path d="M6 9c3.5-1.5 7.5-1.5 12 0" />
+                </svg>
+            ),
+        },
+        {
+            label: "Twitch",
+            svg: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                    <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
+                </svg>
+            ),
+        },
+        {
+            label: "Snapchat",
+            svg: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                    <path d="M12 22s7-3 7-9c0-3.3-2.7-6-6-6s-6 2.7-6 6c0 6 7 9 7 9z" />
+                    <circle cx="12" cy="10" r="2" />
+                </svg>
+            ),
+        },
+        {
+            label: "Telegram",
+            svg: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                    <path d="M22 2L11 13" />
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+            ),
         }
     ];
 
