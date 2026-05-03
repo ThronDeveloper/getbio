@@ -16,7 +16,12 @@ export const metadata: Metadata = {
   title: "GetBio",
   description: "Your link-in-bio, your way.",
   icons: {
-    icon: "/Svetra-Icon.svg",
+    icon: [
+      { url: "/Svetra-Icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/Svetra-Icon.svg",
+    apple: "/Svetra-Icon.svg",
   },
 };
 
