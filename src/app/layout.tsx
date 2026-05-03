@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GetBio",
   description: "Your link-in-bio, your way.",
+  icons: {
+    icon: "/Svetra-Icon.svg",
+  },
 };
 
 export default function RootLayout({
