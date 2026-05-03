@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   description: "Your link-in-bio, your way.",
   icons: {
     icon: [
-      { url: "/Svetra-Icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/Svetra-Icon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
     ],
-    shortcut: "/Svetra-Icon.svg",
-    apple: "/Svetra-Icon.svg",
+    shortcut: "/Svetra-Icon.svg?v=2",
+    apple: "/Svetra-Icon.svg?v=2",
   },
 };
 
